@@ -6,21 +6,37 @@
         return choices[Math.floor(Math.random() * this.length)];
     }
     function playRound(playerSelection,computerSelection){
-        if(computerSelection == "Paper" && playerSelection == "Rock" || computerSelection == "Rock" && playerSelection == "Scissors" || computerSelection == "Scissors" && playerSelection == "Paper")
+        if(computerSelection == "PAPER" && playerSelection == "ROCK" || computerSelection == "ROCK" && playerSelection == "SCISSORS" || computerSelection == "SCISSORS" && playerSelection == "PAPER"){
             console.log("You lose! "+computerSelection+" beats "+playerSelection);
-        else if(computerSelection == playerSelection)
+            return 'c';
+        }
+        else if(computerSelection == playerSelection){
             console.log("Draw");
-        else 
+            return 'd'
+        }
+        else {
             console.log("You win! "+playerSelection+" beats "+computerSelection);
+            return 'p'
+        }
     }
     function game(){
-        let i=1;
+        let i=1,c=0,p=0,whoWon='';
         let playerSelection="null";
-        while(i!=5){
+        while(i<=5){
             playerSelection = prompt("Rock/Paper/Scissors");
-            playRound(playerSelection.toUpperCase(),computerPlay().toUpperCase());
+            whoWon=playRound(playerSelection.toUpperCase(),computerPlay().toUpperCase());
+            if(whoWon=='c')
+                c++;
+            if(whoWon=='p')
+                p++;
             i++;
         }
+        if(c>p)
+                console.log("Computer won!");
+        if(c==p)
+                console.log("Draw");
+        if(p>c)
+            console.log("You won!");
     }
     game();
     </script>
