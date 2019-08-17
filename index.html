@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <script>
+    function computerPlay(){
+        let choices = ["Rock","Paper","Scissors"];
+        return choices[Math.floor(Math.random() * this.length)];
+    }
+    function playRound(playerSelection,computerSelection){
+        if(computerSelection == "Paper" && playerSelection == "Rock" || computerSelection == "Rock" && playerSelection == "Scissors" || computerSelection == "Scissors" && playerSelection == "Paper")
+            console.log("You lose! "+computerSelection+" beats "+playerSelection);
+        else if(computerSelection == playerSelection)
+            console.log("Draw");
+        else 
+            console.log("You win! "+playerSelection+" beats "+computerSelection);
+    }
+    function game(){
+        let i=1;
+        let playerSelection="null";
+        while(i!=5){
+            playerSelection = prompt("Rock/Paper/Scissors");
+            playRound(playerSelection.toUpperCase(),computerPlay().toUpperCase());
+            i++;
+        }
+    }
+    game();
+    </script>
+</html>
